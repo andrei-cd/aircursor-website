@@ -12,7 +12,7 @@ The website for AirCursor, the app that turns iPad and Apple Pencil into a drawi
 | Feedback       | `feedback/index.html` |
 | Not found      | `404.html`            |
 
-Links are relative, so the site works on a custom domain and at `andrei-cd.github.io/aircursor-website/`.
+Links are relative, so the site works at any path as well as at the root of aircursor.app.
 
 ## Layout
 
@@ -20,7 +20,7 @@ Links are relative, so the site works on a custom domain and at `andrei-cd.githu
 assets/
   css/tokens.css   Design tokens (colors, spacing, radii, shadows). Light by default, dark follows the system.
   css/site.css     Components and page layouts, class prefix ac-
-  js/site.js       Mobile menu, demo pause, support search, privacy contents, feedback form
+  js/site.js       Mobile menu, scroll reveals, demo pause, support search, privacy contents, feedback form
   img/icons.svg    Line icon sprite, used with <use href="…/icons.svg#name">
   img/             App icons, favicon, Apple touch icon, og-image.jpg (link previews)
   img/screens/     App screenshots, a light and a dark WebP of each
@@ -28,7 +28,7 @@ assets/
 media/             Not deployed: the demo GIF for sharing, and the sources that make the video
 ```
 
-Every page works without JavaScript. The script only adds polish.
+Every page works without JavaScript. The script only adds polish. On the landing page, elements marked `data-reveal` fade up the first time they scroll into view (`data-reveal="zoom"` scales screenshots in instead). With reduced motion they show straight away, and in-page links scroll smoothly.
 
 ## Preview locally
 
@@ -41,6 +41,8 @@ python3 -m http.server 8000
 Then open http://localhost:8000.
 
 ## Deploy
+
+The website is now live at aircursor.app through Cloudflare Pages, and every push to `main` redeploys it.
 
 The site is configured for Cloudflare Pages. `scripts/build.sh` copies only the public site files into `dist/`, and `wrangler.jsonc` identifies that directory as the deployment output.
 
@@ -82,13 +84,12 @@ The dashboard Git integration is the recommended deployment path; the command-li
 
 ## Before launch
 
-Replace these placeholders across the HTML files:
+The app itself isn't published yet, so the Download buttons still use a placeholder App Store link. Replace these placeholders across the HTML files:
 
 | Placeholder | Where | Replace with |
 | --- | --- | --- |
 | `https://apps.apple.com/app/id0000000000` | Every page (Download buttons) | The App Store listing URL |
-| `YOUR_FORM_ID` | `feedback/index.html` | The ID of the Formspree form |
-| `hello@aircursor.app` | `feedback/index.html` (`data-mailto` and the link) | The support email |
+| `support@aircursor.app` | `feedback/index.html` (`data-mailto` and the link) | The support email, if it changes |
 | `privacy@aircursor.app` | `privacy/index.html` | The privacy contact email |
 
 Also:
