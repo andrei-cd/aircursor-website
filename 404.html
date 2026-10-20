@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · AirCursor</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // GitHub Pages serves this page for any missing path, so resolve assets from the site root:
+    // "/aircursor-website/" on github.io project pages, "/" on a custom domain.
+    document.write('<base href="' + (location.pathname.indexOf('/aircursor-website/') === 0 ? '/aircursor-website/' : '/') + '">');
+  </script>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body class="ac-page">
+  <header class="ac-nav">
+    <div class="ac-nav__inner">
+      <button class="ac-nav__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-links">
+        <svg class="ac-icon" aria-hidden="true"><use href="assets/img/icons.svg#menu"></use></svg>
+      </button>
+      <a class="ac-nav__brand" href="./"><img src="assets/img/aircursor-icon-ipad.png" alt="">AirCursor</a>
+      <nav class="ac-nav__links" id="site-links" aria-label="Site">
+        <a href="./">Overview</a>
+        <a href="support/">Support</a>
+        <a href="feedback/">Feedback</a>
+        <a href="privacy/">Privacy</a>
+      </nav>
+      <a class="ac-btn ac-btn--primary ac-btn--sm" href="https://apps.apple.com/app/id0000000000">Download</a>
+    </div>
+  </header>
+
+  <main class="ac-section ac-404">
+    <div class="ac-wrap">
+      <p class="ac-eyebrow">404</p>
+      <h1 class="ac-headline">This page drew a <span class="ac-stroke">blank.</span></h1>
+      <p class="ac-lead">The page you're looking for isn't here. It may have moved, or the link may be mistyped.</p>
+      <div class="ac-btn-row">
+        <a class="ac-btn ac-btn--primary" href="./">Go to AirCursor</a>
+        <a class="ac-more" href="support/">Visit Support</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
