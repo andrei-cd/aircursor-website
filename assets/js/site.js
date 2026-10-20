@@ -109,6 +109,8 @@
       e.preventDefault();
       status.hidden = true;
       if (!validEmail()) { email.focus(); return; }
+      var message = form.querySelector('[name="message"]');
+      if (!message.value.trim()) { showStatus('Write a message before sending.'); message.focus(); return; }
       if (/YOUR_FORM_ID/.test(form.action)) {
         showStatus('The feedback form isn’t connected yet. Please email <a href="mailto:' + mailto + '">' + mailto + '</a> instead.');
         return;
