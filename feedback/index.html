@@ -1,152 +1,251 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AirCursor Feedback</title>
-  <meta name="description" content="Report a bug, suggest a feature, or ask a question about AirCursor.">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap">
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/site.css">
-  <script src="../assets/js/site.js" defer></script>
-</head>
-<body class="ac-page">
-  <a class="ac-skip" href="#main">Skip to content</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AirCursor Feedback</title>
+    <meta
+      name="description"
+      content="Report a bug, suggest a feature, or ask a question about AirCursor."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap"
+    />
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script src="../assets/js/site.js" defer></script>
+  </head>
+  <body class="ac-page">
+    <a class="ac-skip" href="#main">Skip to content</a>
 
-  <header class="ac-nav">
-    <div class="ac-nav__inner">
-      <button class="ac-nav__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-links">
-        <svg class="ac-icon" aria-hidden="true"><use href="../assets/img/icons.svg#menu"></use></svg>
-      </button>
-      <a class="ac-nav__brand" href="../"><img src="../assets/img/aircursor-icon-ipad.png" alt="">AirCursor</a>
-      <nav class="ac-nav__links" id="site-links" aria-label="Site">
-        <a href="../">Overview</a>
-        <a href="../support/">Support</a>
-        <a href="./" aria-current="page">Feedback</a>
-        <a href="../privacy/">Privacy</a>
-      </nav>
-      <a class="ac-btn ac-btn--primary ac-btn--sm" href="https://apps.apple.com/app/id0000000000">Download</a>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="ac-page-head ac-page-head--center">
-      <div class="ac-wrap">
-        <p class="ac-eyebrow">Feedback</p>
-        <h1 class="ac-headline">Tell us what you <span class="ac-stroke">think.</span></h1>
-        <p class="ac-lead">Found a bug, want a feature, or just made something great with AirCursor? Every message is read by the person who builds it.</p>
-      </div>
-    </section>
-
-    <section class="ac-section ac-section--alt" style="padding-top:72px">
-      <div class="ac-wrap">
-        <div class="ac-feedback-grid">
-          <div>
-            <div class="ac-card ac-card--form">
-              <!-- Replace YOUR_FORM_ID with the ID of your Formspree form -->
-              <form class="ac-form" action="https://formspree.io/f/YOUR_FORM_ID" method="post" data-ac-feedback data-mailto="hello@aircursor.app" novalidate>
-                <input type="hidden" name="_subject" value="AirCursor feedback">
-                <input class="ac-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-                <fieldset class="ac-field ac-field--full" style="border:0;margin:0;padding:0;min-width:0">
-                  <legend class="ac-field__label" style="padding:0;margin-bottom:8px">What's this about?</legend>
-                  <div class="ac-seg ac-seg--form">
-                    <input type="radio" name="kind" id="kind-bug" value="Bug" checked><label for="kind-bug">Bug</label>
-                    <input type="radio" name="kind" id="kind-idea" value="Idea"><label for="kind-idea">Idea</label>
-                    <input type="radio" name="kind" id="kind-question" value="Question"><label for="kind-question">Question</label>
-                    <input type="radio" name="kind" id="kind-praise" value="Praise"><label for="kind-praise">Praise</label>
-                  </div>
-                </fieldset>
-
-                <div class="ac-field">
-                  <label for="f-name">Name <span class="ac-field__opt">(optional)</span></label>
-                  <input class="ac-input" id="f-name" name="name" autocomplete="name">
-                </div>
-                <div class="ac-field">
-                  <label for="f-email">Email</label>
-                  <input class="ac-input" id="f-email" name="email" type="email" autocomplete="email" placeholder="So we can reply" required aria-describedby="f-email-error">
-                  <span class="ac-field__error" id="f-email-error" hidden>Enter an email address so we can reply.</span>
-                </div>
-                <div class="ac-field">
-                  <label for="f-device">iPad and Pencil</label>
-                  <input class="ac-input" id="f-device" name="device" placeholder="e.g. iPad Air (M2), Pencil Pro">
-                </div>
-                <div class="ac-field">
-                  <label for="f-style">Connection style</label>
-                  <select class="ac-select" id="f-style" name="connection">
-                    <option>Wired</option>
-                    <option>Wi-Fi</option>
-                    <option>Bluetooth</option>
-                    <option selected>Automatic</option>
-                    <option>Peer-to-Peer Wi-Fi</option>
-                    <option>Manual IP</option>
-                    <option>Not sure</option>
-                  </select>
-                </div>
-                <div class="ac-field ac-field--full">
-                  <label for="f-msg">Message</label>
-                  <textarea class="ac-textarea" id="f-msg" name="message" placeholder="What happened, and what did you expect?" required aria-describedby="f-msg-hint"></textarea>
-                  <span class="ac-field__hint" id="f-msg-hint">For bugs, the version number shown in AirCursor's Settings helps a lot.</span>
-                </div>
-                <div class="ac-field ac-field--full">
-                  <label class="ac-check"><input type="checkbox" name="followup" value="Yes" checked> It's OK to email me with follow&#8209;up questions.</label>
-                </div>
-
-                <p class="ac-form__status" role="alert" hidden></p>
-
-                <div class="ac-form__actions">
-                  <p class="ac-caption">Prefer email? Write to <a href="mailto:hello@aircursor.app?subject=AirCursor%20feedback">hello@aircursor.app</a>.</p>
-                  <button class="ac-btn ac-btn--primary ac-btn--lg" type="submit">Send feedback</button>
-                </div>
-              </form>
-            </div>
-
-            <div class="ac-sent" hidden>
-              <div class="ac-sent__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-              <h2 class="ac-subtitle" tabindex="-1">Thanks. We got it.</h2>
-              <p class="ac-body">We'll reply to the email you gave us, usually within a couple of days.</p>
-              <a class="ac-more" href="../support/">Back to Support</a>
-            </div>
-          </div>
-
-          <aside>
-            <div class="ac-card">
-              <h3>Before you write</h3>
-              <p>Most connection problems are answered in Troubleshooting.</p>
-              <a class="ac-more" href="../support/#faq">Visit Support</a>
-            </div>
-            <div class="ac-card">
-              <h3>What we receive</h3>
-              <p>Only what you type here. No device data is attached automatically.</p>
-              <a class="ac-more" href="../privacy/#website">Privacy Policy</a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="ac-footer">
-    <div class="ac-wrap ac-wrap--wide">
-      <div class="ac-footer__top">
-        <div class="ac-footer__brand"><img src="../assets/img/aircursor-icon-ipad.png" alt="">AirCursor</div>
-        <nav class="ac-footer__links" aria-label="Footer">
+    <header class="ac-nav">
+      <div class="ac-nav__inner">
+        <button
+          class="ac-nav__menu"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="site-links"
+        >
+          <svg class="ac-icon" aria-hidden="true">
+            <use href="../assets/img/icons.svg#menu"></use>
+          </svg>
+        </button>
+        <a class="ac-nav__brand" href="../">
+          <img src="../assets/img/aircursor-icon-ipad.png" alt="" />
+          AirCursor
+        </a>
+        <nav class="ac-nav__links" id="site-links" aria-label="Site">
           <a href="../">Overview</a>
           <a href="../support/">Support</a>
-          <a href="./">Feedback</a>
-          <a href="../privacy/">Privacy Policy</a>
+          <a href="./" aria-current="page">Feedback</a>
+          <a href="../privacy/">Privacy</a>
         </nav>
+        <a class="ac-btn ac-btn--primary ac-btn--sm" href="https://apps.apple.com/app/id0000000000">
+          Download
+        </a>
       </div>
-      <div class="ac-footer__legal">
-        <p>Copyright © 2026 AirCursor. All rights reserved.</p>
-        <p>Apple, iPad, Mac, Apple Pencil, iPadOS and macOS are trademarks of Apple Inc. AirCursor is not affiliated with Apple.</p>
+    </header>
+
+    <main id="main">
+      <section class="ac-page-head ac-page-head--center">
+        <div class="ac-wrap">
+          <p class="ac-eyebrow">Feedback</p>
+          <h1 class="ac-headline">
+            Tell us what you
+            <span class="ac-stroke">think.</span>
+          </h1>
+          <p class="ac-lead">
+            Found a bug, want a feature, or just made something great with AirCursor? Every message
+            is read by the person who builds it.
+          </p>
+        </div>
+      </section>
+
+      <section class="ac-section ac-section--alt" style="padding-top: 72px">
+        <div class="ac-wrap">
+          <div class="ac-feedback-grid">
+            <div>
+              <div class="ac-card ac-card--form">
+                <!-- Replace YOUR_FORM_ID with the ID of your Formspree form -->
+                <form
+                  class="ac-form"
+                  action="https://formspree.io/f/YOUR_FORM_ID"
+                  method="post"
+                  data-ac-feedback
+                  data-mailto="support@aircursor.app"
+                  novalidate
+                >
+                  <input type="hidden" name="_subject" value="AirCursor feedback" />
+                  <input
+                    class="ac-honeypot"
+                    type="text"
+                    name="_gotcha"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                  />
+
+                  <fieldset
+                    class="ac-field ac-field--full"
+                    style="border: 0; margin: 0; padding: 0; min-width: 0"
+                  >
+                    <legend class="ac-field__label" style="padding: 0; margin-bottom: 8px">
+                      What's this about?
+                    </legend>
+                    <div class="ac-seg ac-seg--form">
+                      <input type="radio" name="kind" id="kind-bug" value="Bug" checked />
+                      <label for="kind-bug">Bug</label>
+                      <input type="radio" name="kind" id="kind-idea" value="Idea" />
+                      <label for="kind-idea">Idea</label>
+                      <input type="radio" name="kind" id="kind-question" value="Question" />
+                      <label for="kind-question">Question</label>
+                      <input type="radio" name="kind" id="kind-praise" value="Praise" />
+                      <label for="kind-praise">Praise</label>
+                    </div>
+                  </fieldset>
+
+                  <div class="ac-field">
+                    <label for="f-name">
+                      Name
+                      <span class="ac-field__opt">(optional)</span>
+                    </label>
+                    <input class="ac-input" id="f-name" name="name" autocomplete="name" />
+                  </div>
+                  <div class="ac-field">
+                    <label for="f-email">Email</label>
+                    <input
+                      class="ac-input"
+                      id="f-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="So we can reply"
+                      required
+                      aria-describedby="f-email-error"
+                    />
+                    <span class="ac-field__error" id="f-email-error" hidden>
+                      Enter an email address so we can reply.
+                    </span>
+                  </div>
+                  <div class="ac-field">
+                    <label for="f-device">iPad and Pencil</label>
+                    <input
+                      class="ac-input"
+                      id="f-device"
+                      name="device"
+                      placeholder="e.g. iPad Air (M2), Pencil Pro"
+                    />
+                  </div>
+                  <div class="ac-field">
+                    <label for="f-style">Connection style</label>
+                    <select class="ac-select" id="f-style" name="connection">
+                      <option>Wired</option>
+                      <option>Wi-Fi</option>
+                      <option>Bluetooth</option>
+                      <option selected>Automatic</option>
+                      <option>Peer-to-Peer Wi-Fi</option>
+                      <option>Manual IP</option>
+                      <option>Not sure</option>
+                    </select>
+                  </div>
+                  <div class="ac-field ac-field--full">
+                    <label for="f-msg">Message</label>
+                    <textarea
+                      class="ac-textarea"
+                      id="f-msg"
+                      name="message"
+                      placeholder="What happened, and what did you expect?"
+                      required
+                      aria-describedby="f-msg-hint"
+                    ></textarea>
+                    <span class="ac-field__hint" id="f-msg-hint">
+                      For bugs, the version number shown in AirCursor's Settings helps a lot.
+                    </span>
+                  </div>
+                  <div class="ac-field ac-field--full">
+                    <label class="ac-check">
+                      <input type="checkbox" name="followup" value="Yes" checked />
+                      It's OK to email me with follow&#8209;up questions.
+                    </label>
+                  </div>
+
+                  <p class="ac-form__status" role="alert" hidden></p>
+
+                  <div class="ac-form__actions">
+                    <p class="ac-caption">
+                      Prefer email? Write to
+                      <a href="mailto:support@aircursor.app?subject=AirCursor%20feedback">
+                        support@aircursor.app
+                      </a>
+                      .
+                    </p>
+                    <button class="ac-btn ac-btn--primary ac-btn--lg" type="submit">
+                      Send feedback
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="ac-sent" hidden>
+                <div class="ac-sent__mark">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" />
+                  </svg>
+                </div>
+                <h2 class="ac-subtitle" tabindex="-1">Thanks. We got it.</h2>
+                <p class="ac-body">
+                  We'll reply to the email you gave us, usually within a couple of days.
+                </p>
+                <a class="ac-more" href="../support/">Back to Support</a>
+              </div>
+            </div>
+
+            <aside>
+              <div class="ac-card">
+                <h3>Before you write</h3>
+                <p>Most connection problems are answered in Troubleshooting.</p>
+                <a class="ac-more" href="../support/#faq">Visit Support</a>
+              </div>
+              <div class="ac-card">
+                <h3>What we receive</h3>
+                <p>Only what you type here. No device data is attached automatically.</p>
+                <a class="ac-more" href="../privacy/#website">Privacy Policy</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ac-footer">
+      <div class="ac-wrap ac-wrap--wide">
+        <div class="ac-footer__top">
+          <div class="ac-footer__brand">
+            <img src="../assets/img/aircursor-icon-ipad.png" alt="" />
+            AirCursor
+          </div>
+          <nav class="ac-footer__links" aria-label="Footer">
+            <a href="../">Overview</a>
+            <a href="../support/">Support</a>
+            <a href="./">Feedback</a>
+            <a href="../privacy/">Privacy Policy</a>
+          </nav>
+        </div>
+        <div class="ac-footer__legal">
+          <p>Copyright © 2026 AirCursor. All rights reserved.</p>
+          <p>
+            Apple, iPad, Mac, Apple Pencil, iPadOS and macOS are trademarks of Apple Inc. AirCursor
+            is not affiliated with Apple.
+          </p>
+        </div>
       </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>

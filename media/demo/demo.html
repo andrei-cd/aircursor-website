@@ -1,142 +1,408 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<style>
-  html, body { margin: 0; background: #0b0b0d; }
-  #stage { position: relative; width: 1200px; height: 700px; overflow: hidden; background: radial-gradient(120% 90% at 50% 0%, #1d1e22 0%, #0b0b0d 70%); font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-  .abs { position: absolute; }
-  /* Mac display */
-  #bezel { left: 330px; top: 30px; width: 800px; height: 512px; border-radius: 22px; background: #1b1b1e; box-shadow: inset 0 0 0 2px #2e2e33; }
-  #neck { left: 700px; top: 540px; width: 80px; height: 66px; background: linear-gradient(#26262a, #1c1c1f); }
-  #foot { left: 630px; top: 602px; width: 220px; height: 12px; border-radius: 6px; background: #222226; }
-  #screen { left: 346px; top: 46px; width: 768px; height: 480px; border-radius: 6px; overflow: hidden; background: linear-gradient(160deg, #c9d6e8 0%, #e9dfe9 55%, #f3e3d3 100%); }
-  #menubar { left: 0; top: 0; width: 768px; height: 22px; background: rgba(255,255,255,.55); backdrop-filter: blur(10px); display: flex; align-items: center; gap: 14px; padding: 0 12px; box-sizing: border-box; font-size: 11px; color: #1d1d1f; }
-  #menubar b { font-weight: 600; }
-  #menubar .right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  #window { left: 44px; top: 42px; width: 680px; height: 410px; border-radius: 12px; background: #fff; box-shadow: 0 18px 50px rgba(0,0,0,.22), 0 0 0 .5px rgba(0,0,0,.2); overflow: hidden; }
-  #titlebar { height: 38px; background: #f6f5f3; border-bottom: 1px solid #e3e1dc; display: flex; align-items: center; gap: 8px; padding: 0 14px; }
-  #titlebar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
-  #titlebar .t { margin-left: 14px; font-size: 13px; font-weight: 600; color: #3a3a3c; }
-  #rail { left: 14px; top: 54px; width: 40px; height: 168px; border-radius: 10px; background: #efeee9; }
-  #rail span { position: absolute; left: 7px; width: 26px; height: 26px; border-radius: 7px; background: #dcdad3; }
-  #rail span.on { background: #0a6ed1; }
-  #ink { left: 0; top: 0; width: 768px; height: 480px; }
-  #cursor { left: 0; top: 0; width: 22px; height: 30px; }
-  /* iPad */
-  #ipad { left: 62px; top: 300px; width: 516px; height: 396px; border-radius: 40px; background: #1b1b1e; box-shadow: inset 0 0 0 2px #2e2e33, 0 30px 60px rgba(0,0,0,.55); }
-  #ipadscreen { left: 80px; top: 318px; width: 480px; height: 360px; border-radius: 24px; overflow: hidden; background: #000 url(ipad.png) center / 100% 100% no-repeat; }
-  #hintcover { left: 128px; top: 166px; width: 224px; height: 30px; background: #000; opacity: 0; }
-  #shadow { left: 0; top: 0; width: 40px; height: 14px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.18), transparent); }
-  #pencil { left: 0; top: 0; width: 40px; height: 400px; transform-origin: 20px 390px; }
-</style>
-</head>
-<body>
-<div id="stage">
-  <div id="bezel" class="abs"></div>
-  <div id="neck" class="abs"></div>
-  <div id="foot" class="abs"></div>
-  <div id="screen" class="abs">
-    <div id="menubar" class="abs">
-      <svg width="11" height="13" viewBox="0 0 11 13"><circle cx="5.5" cy="7" r="5" fill="#1d1d1f" opacity=".85"/></svg>
-      <b>Canvas</b><span>File</span><span>Edit</span><span>Brush</span><span>View</span><span>Window</span>
-      <span class="right">
-        <!-- AirCursor's menu bar icon while connected: cursorarrow.rays -->
-        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" stroke="#1d1d1f" stroke-width="1.2" stroke-linecap="round"><path d="M6 5.2v7.2l1.9-1.8 1.3 2.9 1.2-.5-1.3-2.9h2.6z" fill="#1d1d1f" stroke-linejoin="round"/><path d="M6 .8v1.8M2.4 2.3l1.2 1.2M1 5.6h1.8M9.6 2.3 8.4 3.5"/></svg>
-        <svg width="16" height="11" viewBox="0 0 16 11"><rect x=".5" y=".5" width="13" height="10" rx="2.5" fill="none" stroke="#1d1d1f" opacity=".6"/><rect x="2" y="2" width="9" height="7" rx="1.2" fill="#1d1d1f"/><rect x="14.5" y="3.5" width="1.2" height="4" rx=".6" fill="#1d1d1f" opacity=".6"/></svg>
-        <span>Tue Oct 20&nbsp; 9:41 AM</span>
-      </span>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0b0b0d;
+      }
+      #stage {
+        position: relative;
+        width: 1200px;
+        height: 700px;
+        overflow: hidden;
+        background: radial-gradient(120% 90% at 50% 0%, #1d1e22 0%, #0b0b0d 70%);
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      .abs {
+        position: absolute;
+      }
+      /* Mac display */
+      #bezel {
+        left: 330px;
+        top: 30px;
+        width: 800px;
+        height: 512px;
+        border-radius: 22px;
+        background: #1b1b1e;
+        box-shadow: inset 0 0 0 2px #2e2e33;
+      }
+      #neck {
+        left: 700px;
+        top: 540px;
+        width: 80px;
+        height: 66px;
+        background: linear-gradient(#26262a, #1c1c1f);
+      }
+      #foot {
+        left: 630px;
+        top: 602px;
+        width: 220px;
+        height: 12px;
+        border-radius: 6px;
+        background: #222226;
+      }
+      #screen {
+        left: 346px;
+        top: 46px;
+        width: 768px;
+        height: 480px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #c9d6e8 0%, #e9dfe9 55%, #f3e3d3 100%);
+      }
+      #menubar {
+        left: 0;
+        top: 0;
+        width: 768px;
+        height: 22px;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0 12px;
+        box-sizing: border-box;
+        font-size: 11px;
+        color: #1d1d1f;
+      }
+      #menubar b {
+        font-weight: 600;
+      }
+      #menubar .right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      #window {
+        left: 44px;
+        top: 42px;
+        width: 680px;
+        height: 410px;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow:
+          0 18px 50px rgba(0, 0, 0, 0.22),
+          0 0 0 0.5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+      #titlebar {
+        height: 38px;
+        background: #f6f5f3;
+        border-bottom: 1px solid #e3e1dc;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px;
+      }
+      #titlebar i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: block;
+      }
+      #titlebar .t {
+        margin-left: 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #3a3a3c;
+      }
+      #rail {
+        left: 14px;
+        top: 54px;
+        width: 40px;
+        height: 168px;
+        border-radius: 10px;
+        background: #efeee9;
+      }
+      #rail span {
+        position: absolute;
+        left: 7px;
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        background: #dcdad3;
+      }
+      #rail span.on {
+        background: #0a6ed1;
+      }
+      #ink {
+        left: 0;
+        top: 0;
+        width: 768px;
+        height: 480px;
+      }
+      #cursor {
+        left: 0;
+        top: 0;
+        width: 22px;
+        height: 30px;
+      }
+      /* iPad */
+      #ipad {
+        left: 62px;
+        top: 300px;
+        width: 516px;
+        height: 396px;
+        border-radius: 40px;
+        background: #1b1b1e;
+        box-shadow:
+          inset 0 0 0 2px #2e2e33,
+          0 30px 60px rgba(0, 0, 0, 0.55);
+      }
+      #ipadscreen {
+        left: 80px;
+        top: 318px;
+        width: 480px;
+        height: 360px;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #000 url(ipad.png) center / 100% 100% no-repeat;
+      }
+      #hintcover {
+        left: 128px;
+        top: 166px;
+        width: 224px;
+        height: 30px;
+        background: #000;
+        opacity: 0;
+      }
+      #shadow {
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 14px;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(255, 255, 255, 0.18), transparent);
+      }
+      #pencil {
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 400px;
+        transform-origin: 20px 390px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage">
+      <div id="bezel" class="abs"></div>
+      <div id="neck" class="abs"></div>
+      <div id="foot" class="abs"></div>
+      <div id="screen" class="abs">
+        <div id="menubar" class="abs">
+          <svg width="11" height="13" viewBox="0 0 11 13">
+            <circle cx="5.5" cy="7" r="5" fill="#1d1d1f" opacity=".85" />
+          </svg>
+          <b>Canvas</b>
+          <span>File</span>
+          <span>Edit</span>
+          <span>Brush</span>
+          <span>View</span>
+          <span>Window</span>
+          <span class="right">
+            <!-- AirCursor's menu bar icon while connected: cursorarrow.rays -->
+            <svg
+              width="16"
+              height="14"
+              viewBox="0 0 16 14"
+              fill="none"
+              stroke="#1d1d1f"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            >
+              <path
+                d="M6 5.2v7.2l1.9-1.8 1.3 2.9 1.2-.5-1.3-2.9h2.6z"
+                fill="#1d1d1f"
+                stroke-linejoin="round"
+              />
+              <path d="M6 .8v1.8M2.4 2.3l1.2 1.2M1 5.6h1.8M9.6 2.3 8.4 3.5" />
+            </svg>
+            <svg width="16" height="11" viewBox="0 0 16 11">
+              <rect
+                x=".5"
+                y=".5"
+                width="13"
+                height="10"
+                rx="2.5"
+                fill="none"
+                stroke="#1d1d1f"
+                opacity=".6"
+              />
+              <rect x="2" y="2" width="9" height="7" rx="1.2" fill="#1d1d1f" />
+              <rect x="14.5" y="3.5" width="1.2" height="4" rx=".6" fill="#1d1d1f" opacity=".6" />
+            </svg>
+            <span>Tue Oct 20&nbsp; 9:41 AM</span>
+          </span>
+        </div>
+        <div id="window" class="abs">
+          <div id="titlebar">
+            <i style="background: #ff5f57"></i>
+            <i style="background: #febc2e"></i>
+            <i style="background: #28c840"></i>
+            <span class="t">Untitled Sketch</span>
+          </div>
+          <div id="rail" class="abs">
+            <span class="on" style="top: 7px"></span>
+            <span style="top: 45px"></span>
+            <span style="top: 83px"></span>
+            <span style="top: 121px"></span>
+          </div>
+        </div>
+        <canvas id="ink" class="abs" width="1536" height="960"></canvas>
+        <svg id="cursor" class="abs" viewBox="-2 -2 22 30">
+          <path
+            d="M0 0 L0 22 L5.5 16.8 L9.4 25.6 L13 24 L9.2 15.4 L16.5 15.4 Z"
+            fill="#111"
+            stroke="#fff"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div id="ipad" class="abs"></div>
+      <div id="ipadscreen" class="abs">
+        <div id="hintcover" class="abs"></div>
+        <div id="shadow" class="abs"></div>
+      </div>
+      <svg id="pencil" class="abs" viewBox="-20 -390 40 400">
+        <g id="pencilg">
+          <defs>
+            <linearGradient id="body" x1="0" x2="1">
+              <stop offset="0" stop-color="#e9e9ec" />
+              <stop offset=".35" stop-color="#ffffff" />
+              <stop offset="1" stop-color="#d4d4d8" />
+            </linearGradient>
+          </defs>
+          <path d="M0 0 L-5 -14 L5 -14 Z" fill="#3a3a3e" />
+          <path d="M-5 -14 L-11 -40 L11 -40 L5 -14 Z" fill="#f2f2f4" />
+          <rect x="-11" y="-372" width="22" height="334" rx="3" fill="url(#body)" />
+          <rect x="-11" y="-380" width="22" height="20" rx="10" fill="#e6e6ea" />
+        </g>
+      </svg>
     </div>
-    <div id="window" class="abs">
-      <div id="titlebar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">Untitled Sketch</span></div>
-      <div id="rail" class="abs"><span class="on" style="top:7px"></span><span style="top:45px"></span><span style="top:83px"></span><span style="top:121px"></span></div>
-    </div>
-    <canvas id="ink" class="abs" width="1536" height="960"></canvas>
-    <svg id="cursor" class="abs" viewBox="-2 -2 22 30"><path d="M0 0 L0 22 L5.5 16.8 L9.4 25.6 L13 24 L9.2 15.4 L16.5 15.4 Z" fill="#111" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
-  </div>
-  <div id="ipad" class="abs"></div>
-  <div id="ipadscreen" class="abs"><div id="hintcover" class="abs"></div><div id="shadow" class="abs"></div></div>
-  <svg id="pencil" class="abs" viewBox="-20 -390 40 400">
-    <g id="pencilg">
-      <defs><linearGradient id="body" x1="0" x2="1"><stop offset="0" stop-color="#e9e9ec"/><stop offset=".35" stop-color="#ffffff"/><stop offset="1" stop-color="#d4d4d8"/></linearGradient></defs>
-      <path d="M0 0 L-5 -14 L5 -14 Z" fill="#3a3a3e"/>
-      <path d="M-5 -14 L-11 -40 L11 -40 L5 -14 Z" fill="#f2f2f4"/>
-      <rect x="-11" y="-372" width="22" height="334" rx="3" fill="url(#body)"/>
-      <rect x="-11" y="-380" width="22" height="20" rx="10" fill="#e6e6ea"/>
-    </g>
-  </svg>
-</div>
-<svg width="0" height="0" style="position:absolute"><path id="path" d="M 250.0 260.0 C 276.7 156.0 321.7 110.0 355.0 170.0 S 390.0 298.0 440.0 238.0 S 480.0 110.0 525.0 152.0 S 575.0 282.0 623.3 212.0 S 668.3 136.0 700.0 174.0"/></svg>
-<script>
-  // Tablet mode: the Mac screen (16:10) maps onto the iPad canvas at a matched aspect ratio, centred.
-  const MAC = { w: 768, h: 480 };
-  const PAD = { x: 80, y: 318, w: 480, h: 360 };
-  const area = { w: PAD.w, h: PAD.w / 1.6 }; area.x = PAD.x; area.y = PAD.y + (PAD.h - area.h) / 2;
-  const toPad = (p) => ({ x: area.x + p.x / MAC.w * area.w, y: area.y + p.y / MAC.h * area.h });
+    <svg width="0" height="0" style="position: absolute">
+      <path
+        id="path"
+        d="M 250.0 260.0 C 276.7 156.0 321.7 110.0 355.0 170.0 S 390.0 298.0 440.0 238.0 S 480.0 110.0 525.0 152.0 S 575.0 282.0 623.3 212.0 S 668.3 136.0 700.0 174.0"
+      />
+    </svg>
+    <script>
+      // Tablet mode: the Mac screen (16:10) maps onto the iPad canvas at a matched aspect ratio, centred.
+      const MAC = { w: 768, h: 480 };
+      const PAD = { x: 80, y: 318, w: 480, h: 360 };
+      const area = { w: PAD.w, h: PAD.w / 1.6 };
+      area.x = PAD.x;
+      area.y = PAD.y + (PAD.h - area.h) / 2;
+      const toPad = (p) => ({
+        x: area.x + (p.x / MAC.w) * area.w,
+        y: area.y + (p.y / MAC.h) * area.h,
+      });
 
-  const path = document.getElementById('path');
-  const L = path.getTotalLength();
-  const N = 600;
-  const pts = Array.from({ length: N + 1 }, (_, i) => { const q = path.getPointAtLength(L * i / N); return { x: q.x, y: q.y }; });
-  const at = (s) => pts[Math.max(0, Math.min(N, Math.round(s * N)))];
-  // Pressure swells mid-stroke, with a little wobble, like a real hand
-  const pressure = (s) => 0.25 + 0.75 * Math.pow(Math.sin(Math.PI * Math.min(1, s * 1.05)), 0.7) * (0.85 + 0.15 * Math.sin(s * 23));
-  const stops = [[0, [11,147,241]], [.42, [144,106,166]], [.55, [242,107,40]], [.75, [255,131,0]], [1, [255,191,0]]];
-  const color = (s) => { for (let i = 1; i < stops.length; i++) if (s <= stops[i][0]) { const [a, ca] = stops[i-1], [b, cb] = stops[i]; const k = (s - a) / (b - a); return `rgb(${ca.map((c, j) => Math.round(c + (cb[j] - c) * k)).join(',')})`; } return 'rgb(255,191,0)'; };
+      const path = document.getElementById('path');
+      const L = path.getTotalLength();
+      const N = 600;
+      const pts = Array.from({ length: N + 1 }, (_, i) => {
+        const q = path.getPointAtLength((L * i) / N);
+        return { x: q.x, y: q.y };
+      });
+      const at = (s) => pts[Math.max(0, Math.min(N, Math.round(s * N)))];
+      // Pressure swells mid-stroke, with a little wobble, like a real hand
+      const pressure = (s) =>
+        0.25 +
+        0.75 *
+          Math.pow(Math.sin(Math.PI * Math.min(1, s * 1.05)), 0.7) *
+          (0.85 + 0.15 * Math.sin(s * 23));
+      const stops = [
+        [0, [11, 147, 241]],
+        [0.42, [144, 106, 166]],
+        [0.55, [242, 107, 40]],
+        [0.75, [255, 131, 0]],
+        [1, [255, 191, 0]],
+      ];
+      const color = (s) => {
+        for (let i = 1; i < stops.length; i++)
+          if (s <= stops[i][0]) {
+            const [a, ca] = stops[i - 1],
+              [b, cb] = stops[i];
+            const k = (s - a) / (b - a);
+            return `rgb(${ca.map((c, j) => Math.round(c + (cb[j] - c) * k)).join(',')})`;
+          }
+        return 'rgb(255,191,0)';
+      };
 
-  const T = 8;
-  const clamp = (v) => Math.max(0, Math.min(1, v));
-  const ease = (v) => v < .5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2;
-  const lerp = (a, b, k) => a + (b - a) * k;
-  const ink = document.getElementById('ink').getContext('2d'); ink.scale(2, 2);
-  const $ = (id) => document.getElementById(id);
-  const start = pts[0], end = pts[N];
-  const hoverFrom = { x: start.x + 120, y: start.y - 150 }, hoverTo = { x: end.x + 40, y: end.y - 90 };
+      const T = 8;
+      const clamp = (v) => Math.max(0, Math.min(1, v));
+      const ease = (v) => (v < 0.5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2);
+      const lerp = (a, b, k) => a + (b - a) * k;
+      const ink = document.getElementById('ink').getContext('2d');
+      ink.scale(2, 2);
+      const $ = (id) => document.getElementById(id);
+      const start = pts[0],
+        end = pts[N];
+      const hoverFrom = { x: start.x + 120, y: start.y - 150 },
+        hoverTo = { x: end.x + 40, y: end.y - 90 };
 
-  window.render = function (t) {
-    t = ((t % T) + T) % T;
-    // Phases
-    const approach = clamp((t - 0.2) / 0.8);          // hover in toward the start
-    const draw = ease(clamp((t - 1.0) / 3.8));        // touching, drawing
-    const leave = clamp((t - 4.8) / 0.7);             // lift and hover away
-    const touching = t >= 1.0 && t < 4.8;
-    const pencilAlpha = Math.min(clamp((t - 0.1) / 0.4), 1 - clamp((t - 5.4) / 0.5));
-    const inkAlpha = 1 - clamp((t - 6.8) / 0.6);
+      window.render = function (t) {
+        t = ((t % T) + T) % T;
+        // Phases
+        const approach = clamp((t - 0.2) / 0.8); // hover in toward the start
+        const draw = ease(clamp((t - 1.0) / 3.8)); // touching, drawing
+        const leave = clamp((t - 4.8) / 0.7); // lift and hover away
+        const touching = t >= 1.0 && t < 4.8;
+        const pencilAlpha = Math.min(clamp((t - 0.1) / 0.4), 1 - clamp((t - 5.4) / 0.5));
+        const inkAlpha = 1 - clamp((t - 6.8) / 0.6);
 
-    // Pencil position in Mac-screen units
-    let p, lift;
-    if (t < 1.0) { const k = ease(approach); p = { x: lerp(hoverFrom.x, start.x, k), y: lerp(hoverFrom.y, start.y, k) }; lift = lerp(26, 0, k); }
-    else if (touching) { p = at(draw); lift = 0; }
-    else { const k = ease(leave); p = { x: lerp(end.x, hoverTo.x, k), y: lerp(end.y, hoverTo.y, k) }; lift = lerp(0, 26, Math.min(1, k * 1.6)); }
-    const inRange = pencilAlpha > 0.5;
-    const q = toPad(p);
-    const pen = $('pencil');
-    pen.style.transform = `translate(${q.x - 20}px, ${q.y - lift * 0.6 - 390}px) rotate(22deg)`;
-    pen.style.opacity = pencilAlpha;
-    const sh = $('shadow');
-    sh.style.transform = `translate(${q.x - PAD.x - 20 + lift * 0.5}px, ${q.y - PAD.y - 7 + lift * 0.3}px) scale(${1 + lift / 30})`;
-    sh.style.opacity = pencilAlpha * (touching ? 0.9 : 0.5);
+        // Pencil position in Mac-screen units
+        let p, lift;
+        if (t < 1.0) {
+          const k = ease(approach);
+          p = { x: lerp(hoverFrom.x, start.x, k), y: lerp(hoverFrom.y, start.y, k) };
+          lift = lerp(26, 0, k);
+        } else if (touching) {
+          p = at(draw);
+          lift = 0;
+        } else {
+          const k = ease(leave);
+          p = { x: lerp(end.x, hoverTo.x, k), y: lerp(end.y, hoverTo.y, k) };
+          lift = lerp(0, 26, Math.min(1, k * 1.6));
+        }
+        const inRange = pencilAlpha > 0.5;
+        const q = toPad(p);
+        const pen = $('pencil');
+        pen.style.transform = `translate(${q.x - 20}px, ${q.y - lift * 0.6 - 390}px) rotate(22deg)`;
+        pen.style.opacity = pencilAlpha;
+        const sh = $('shadow');
+        sh.style.transform = `translate(${q.x - PAD.x - 20 + lift * 0.5}px, ${q.y - PAD.y - 7 + lift * 0.3}px) scale(${1 + lift / 30})`;
+        sh.style.opacity = pencilAlpha * (touching ? 0.9 : 0.5);
 
-    // Idle hint goes away on the first touch, and comes back when the loop resets
-    $('hintcover').style.opacity = Math.max(clamp((t - 1.0) / 0.25), 0) * (1 - clamp((t - 7.4) / 0.5));
+        // Idle hint goes away on the first touch, and comes back when the loop resets
+        $('hintcover').style.opacity =
+          Math.max(clamp((t - 1.0) / 0.25), 0) * (1 - clamp((t - 7.4) / 0.5));
 
-    // Cursor: in Tablet mode it jumps to wherever the Pencil hovers
-    const c = t < 0.35 ? end : p;
-    $('cursor').style.transform = `translate(${c.x - 2}px, ${c.y - 2}px)`;
+        // Cursor: in Tablet mode it jumps to wherever the Pencil hovers
+        const c = t < 0.35 ? end : p;
+        $('cursor').style.transform = `translate(${c.x - 2}px, ${c.y - 2}px)`;
 
-    // Ink on the Mac, width from pressure
-    ink.clearRect(0, 0, MAC.w, MAC.h);
-    ink.globalAlpha = inkAlpha;
-    ink.lineCap = 'round';
-    const upto = t < 1.0 ? -1 : Math.round((touching ? draw : 1) * N);
-    for (let i = 1; i <= upto; i++) {
-      const s = i / N;
-      ink.strokeStyle = color(s);
-      ink.lineWidth = 1.5 + 9 * pressure(s);
-      ink.beginPath(); ink.moveTo(pts[i-1].x, pts[i-1].y); ink.lineTo(pts[i].x, pts[i].y); ink.stroke();
-    }
-  };
-  window.render(0);
-</script>
-</body>
+        // Ink on the Mac, width from pressure
+        ink.clearRect(0, 0, MAC.w, MAC.h);
+        ink.globalAlpha = inkAlpha;
+        ink.lineCap = 'round';
+        const upto = t < 1.0 ? -1 : Math.round((touching ? draw : 1) * N);
+        for (let i = 1; i <= upto; i++) {
+          const s = i / N;
+          ink.strokeStyle = color(s);
+          ink.lineWidth = 1.5 + 9 * pressure(s);
+          ink.beginPath();
+          ink.moveTo(pts[i - 1].x, pts[i - 1].y);
+          ink.lineTo(pts[i].x, pts[i].y);
+          ink.stroke();
+        }
+      };
+      window.render(0);
+    </script>
+  </body>
 </html>

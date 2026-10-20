@@ -4,13 +4,13 @@ The website for AirCursor, the app that turns iPad and Apple Pencil into a drawi
 
 ## Pages
 
-| Page | File |
-| --- | --- |
-| Landing | `index.html` |
-| Support | `support/index.html` |
-| Privacy Policy | `privacy/index.html` |
-| Feedback | `feedback/index.html` |
-| Not found | `404.html` |
+| Page           | File                  |
+| -------------- | --------------------- |
+| Landing        | `index.html`          |
+| Support        | `support/index.html`  |
+| Privacy Policy | `privacy/index.html`  |
+| Feedback       | `feedback/index.html` |
+| Not found      | `404.html`            |
 
 Links are relative, so the site works on a custom domain and at `andrei-cd.github.io/aircursor-website/`.
 
@@ -50,13 +50,13 @@ The site is configured for Cloudflare Pages. `scripts/build.sh` copies only the 
 2. Connect GitHub and grant Cloudflare access to this repository.
 3. Use these build settings:
 
-| Setting | Value |
-| --- | --- |
-| Production branch | `main` |
-| Framework preset | `None` |
-| Build command | `./scripts/build.sh` |
-| Build output directory | `dist` |
-| Root directory | `/` |
+| Setting                | Value                |
+| ---------------------- | -------------------- |
+| Production branch      | `main`               |
+| Framework preset       | `None`               |
+| Build command          | `./scripts/build.sh` |
+| Build output directory | `dist`               |
+| Root directory         | `/`                  |
 
 Cloudflare creates a preview deployment for pull requests and deploys production whenever `main` changes.
 
