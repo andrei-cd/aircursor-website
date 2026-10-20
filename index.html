@@ -34,6 +34,9 @@
     />
     <link rel="stylesheet" href="assets/css/tokens.css" />
     <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      document.documentElement.classList.add("ac-js");
+    </script>
     <script src="assets/js/site.js" defer></script>
   </head>
   <body class="ac-page">
@@ -70,17 +73,17 @@
       <section class="ac-stage ac-hero">
         <div class="ac-hero__glow" aria-hidden="true"></div>
         <div class="ac-wrap">
-          <img class="ac-hero__icon" src="assets/img/aircursor-icon-ipad.png" alt="" />
-          <p class="ac-eyebrow">Free on the App Store during launch</p>
-          <h1 class="ac-hero-type ac-hero__title">
+          <img data-reveal class="ac-hero__icon" src="assets/img/aircursor-icon-ipad.png" alt="" />
+          <p class="ac-eyebrow" data-reveal>Free on the App Store during launch</p>
+          <h1 class="ac-hero-type ac-hero__title" data-reveal>
             Your Mac, at the tip of your
             <span class="ac-stroke">Pencil.</span>
           </h1>
-          <p class="ac-lead">
+          <p class="ac-lead" data-reveal>
             AirCursor turns iPad and Apple Pencil into a pressure&#8209;sensitive drawing tablet and
             a trackpad for your Mac.
           </p>
-          <div class="ac-btn-row">
+          <div class="ac-btn-row" data-reveal>
             <a
               class="ac-btn ac-btn--primary ac-btn--lg"
               href="https://apps.apple.com/app/id0000000000"
@@ -89,13 +92,13 @@
             </a>
             <a class="ac-more" href="#demo">Watch it work</a>
           </div>
-          <p class="ac-caption ac-hero__note">
+          <p class="ac-caption ac-hero__note" data-reveal>
             One download covers both. Requires iPadOS 17 and macOS 14 or later.
           </p>
         </div>
 
         <div class="ac-wrap ac-wrap--wide ac-hero__demo" id="demo">
-          <figure class="ac-demo" data-ac-demo>
+          <figure class="ac-demo" data-ac-demo data-reveal>
             <div class="ac-demo__canvas">
               <video
                 src="assets/video/aircursor-demo.mp4"
@@ -172,7 +175,7 @@
 
       <section class="ac-section ac-section--alt" id="modes">
         <div class="ac-wrap ac-wrap--wide">
-          <div class="ac-section__head">
+          <div class="ac-section__head" data-reveal>
             <p class="ac-eyebrow">Two cursor modes</p>
             <h2 class="ac-headline">Point the way you think.</h2>
             <p class="ac-lead">
@@ -184,7 +187,7 @@
             </p>
           </div>
           <div class="ac-tiles">
-            <article class="ac-tile ac-tile--canvas">
+            <article data-reveal class="ac-tile ac-tile--canvas">
               <div class="ac-tile__text">
                 <h3 class="ac-title">Trackpad mode</h3>
                 <p class="ac-body">
@@ -228,7 +231,7 @@
                 </svg>
               </div>
             </article>
-            <article class="ac-tile ac-tile--canvas">
+            <article data-reveal class="ac-tile ac-tile--canvas">
               <div class="ac-tile__text">
                 <h3 class="ac-title">Tablet mode</h3>
                 <p class="ac-body">
@@ -268,7 +271,7 @@
       <section class="ac-section" id="pressure">
         <div class="ac-wrap ac-wrap--wide">
           <div class="ac-tiles">
-            <article class="ac-tile ac-tile--full ac-tile--stage ac-tile--canvas ac-tile--split">
+            <article data-reveal class="ac-tile ac-tile--full ac-tile--stage ac-tile--canvas ac-tile--split">
               <div class="ac-tile__text">
                 <p class="ac-eyebrow">Pressure</p>
                 <h2 class="ac-headline ac-headline--tile">
@@ -326,6 +329,7 @@
             </article>
             <article
               id="settings"
+              data-reveal
               class="ac-tile ac-tile--full ac-tile--split ac-tile--split-even ac-tile--canvas"
             >
               <div class="ac-tile__text">
@@ -342,7 +346,7 @@
                 </p>
               </div>
               <div class="ac-tile__visual ac-tile__visual--center">
-                <picture class="ac-shot ac-shot--sheet">
+                <picture data-reveal="zoom" class="ac-shot ac-shot--sheet">
                   <source
                     srcset="assets/img/screens/ipad-settings-dark.webp"
                     media="(prefers-color-scheme: dark)"
@@ -363,7 +367,7 @@
 
       <section class="ac-section ac-section--alt" id="gestures">
         <div class="ac-wrap ac-wrap--wide">
-          <div class="ac-section__head">
+          <div class="ac-section__head" data-reveal>
             <p class="ac-eyebrow">Finger gestures</p>
             <h2 class="ac-headline">Every gesture you already know.</h2>
             <p class="ac-lead">
@@ -372,16 +376,16 @@
             </p>
           </div>
           <div class="ac-tiles">
-            <article class="ac-tile ac-tile--full ac-tile--gestures">
+            <article data-reveal class="ac-tile ac-tile--full ac-tile--gestures">
               <div class="ac-gestures">
-                <div class="ac-gesture">
+                <div class="ac-gesture" data-reveal>
                   <svg viewBox="0 0 84 80" aria-hidden="true">
                     <circle cx="40" cy="40" r="12" class="v-g-finger" />
                     <circle cx="40" cy="40" r="22" class="v-g-ring" />
                   </svg>
                   <p>Tap to click</p>
                 </div>
-                <div class="ac-gesture">
+                <div class="ac-gesture" data-reveal>
                   <svg viewBox="0 0 84 80" aria-hidden="true">
                     <circle cx="30" cy="40" r="11" class="v-g-finger" />
                     <circle cx="54" cy="36" r="11" class="v-g-finger" />
@@ -389,7 +393,7 @@
                   </svg>
                   <p>Two-finger tap to right&#8209;click</p>
                 </div>
-                <div class="ac-gesture">
+                <div class="ac-gesture" data-reveal>
                   <svg viewBox="0 0 84 80" aria-hidden="true">
                     <circle cx="30" cy="48" r="11" class="v-g-finger" />
                     <circle cx="54" cy="44" r="11" class="v-g-finger" />
@@ -397,7 +401,7 @@
                   </svg>
                   <p>Two-finger scroll that coasts</p>
                 </div>
-                <div class="ac-gesture">
+                <div class="ac-gesture" data-reveal>
                   <svg viewBox="0 0 84 80" aria-hidden="true">
                     <circle cx="26" cy="54" r="11" class="v-g-finger" />
                     <circle cx="56" cy="24" r="11" class="v-g-finger" />
@@ -405,7 +409,7 @@
                   </svg>
                   <p>Pinch to zoom</p>
                 </div>
-                <div class="ac-gesture">
+                <div class="ac-gesture" data-reveal>
                   <svg viewBox="0 0 84 80" aria-hidden="true">
                     <circle cx="20" cy="42" r="10" class="v-g-finger" />
                     <circle cx="42" cy="36" r="10" class="v-g-finger" />
@@ -416,7 +420,7 @@
                 </div>
               </div>
             </article>
-            <article class="ac-tile ac-tile--third ac-tile--compact">
+            <article data-reveal class="ac-tile ac-tile--third ac-tile--compact">
               <div class="ac-tile__text">
                 <svg class="ac-icon ac-tile__icon" aria-hidden="true">
                   <use href="assets/img/icons.svg#pencil"></use>
@@ -427,7 +431,7 @@
                 </p>
               </div>
             </article>
-            <article class="ac-tile ac-tile--third ac-tile--compact">
+            <article data-reveal class="ac-tile ac-tile--third ac-tile--compact">
               <div class="ac-tile__text">
                 <svg class="ac-icon ac-tile__icon" aria-hidden="true">
                   <use href="assets/img/icons.svg#hand"></use>
@@ -439,7 +443,7 @@
                 </p>
               </div>
             </article>
-            <article class="ac-tile ac-tile--third ac-tile--compact">
+            <article data-reveal class="ac-tile ac-tile--third ac-tile--compact">
               <div class="ac-tile__text">
                 <svg class="ac-icon ac-tile__icon" aria-hidden="true">
                   <use href="assets/img/icons.svg#sliders"></use>
@@ -457,7 +461,7 @@
 
       <section class="ac-section" id="connect">
         <div class="ac-wrap ac-wrap--wide">
-          <div class="ac-section__head">
+          <div class="ac-section__head" data-reveal>
             <p class="ac-eyebrow">Connections</p>
             <h2 class="ac-headline">
               Cable, Wi&#8209;Fi or Bluetooth.
@@ -471,7 +475,7 @@
             </p>
           </div>
           <div class="ac-conns">
-            <article class="ac-conn ac-conn--recommended">
+            <article data-reveal class="ac-conn ac-conn--recommended">
               <svg class="ac-icon" aria-hidden="true">
                 <use href="assets/img/icons.svg#cable"></use>
               </svg>
@@ -494,7 +498,7 @@
                 <span>Lowest latency</span>
               </div>
             </article>
-            <article class="ac-conn">
+            <article data-reveal class="ac-conn">
               <svg class="ac-icon" aria-hidden="true">
                 <use href="assets/img/icons.svg#wifi"></use>
               </svg>
@@ -509,7 +513,7 @@
                 <span>Low latency</span>
               </div>
             </article>
-            <article class="ac-conn">
+            <article data-reveal class="ac-conn">
               <svg class="ac-icon" aria-hidden="true">
                 <use href="assets/img/icons.svg#bluetooth"></use>
               </svg>
@@ -524,7 +528,7 @@
                 <span>Medium latency</span>
               </div>
             </article>
-            <article class="ac-conn">
+            <article data-reveal class="ac-conn">
               <svg class="ac-icon" aria-hidden="true">
                 <use href="assets/img/icons.svg#auto"></use>
               </svg>
@@ -545,7 +549,7 @@
 
       <section class="ac-section ac-section--alt">
         <div class="ac-wrap">
-          <div class="ac-section__head">
+          <div class="ac-section__head" data-reveal>
             <p class="ac-eyebrow">Compatibility</p>
             <h2 class="ac-headline">Works with every Apple&nbsp;Pencil.</h2>
             <p class="ac-lead">
@@ -553,7 +557,7 @@
               settings it can use.
             </p>
           </div>
-          <table class="ac-table">
+          <table class="ac-table" data-reveal>
             <thead>
               <tr>
                 <th scope="col">Apple Pencil</th>
@@ -603,7 +607,7 @@
       <section class="ac-section" id="private">
         <div class="ac-wrap ac-wrap--wide">
           <div class="ac-tiles">
-            <article class="ac-tile ac-tile--stage ac-tile--spread">
+            <article data-reveal class="ac-tile ac-tile--stage ac-tile--spread">
               <div class="ac-tile__text">
                 <p class="ac-eyebrow">Private by design</p>
                 <h3 class="ac-title">
@@ -618,6 +622,7 @@
               </div>
               <div class="ac-tile__visual ac-tile__visual--center">
                 <img
+                  data-reveal="zoom"
                   class="ac-shot ac-shot--window"
                   src="assets/img/screens/mac-waiting-dark.webp"
                   alt="AirCursor on the Mac, waiting for an iPad and showing the pairing code 482 913."
@@ -627,7 +632,7 @@
                 />
               </div>
             </article>
-            <article class="ac-tile ac-tile--canvas ac-tile--spread">
+            <article data-reveal class="ac-tile ac-tile--canvas ac-tile--spread">
               <div class="ac-tile__text">
                 <h3 class="ac-title">Nothing to sign up for.</h3>
                 <p class="ac-body">
@@ -649,7 +654,7 @@
       <section class="ac-section ac-section--alt" id="mac">
         <div class="ac-wrap ac-wrap--wide">
           <div class="ac-tiles">
-            <article class="ac-tile ac-tile--full ac-tile--split ac-tile--split-even">
+            <article data-reveal class="ac-tile ac-tile--full ac-tile--split ac-tile--split-even">
               <div class="ac-tile__text">
                 <p class="ac-eyebrow">On the Mac</p>
                 <h2 class="ac-headline ac-headline--tile">Lives in your menu&nbsp;bar.</h2>
@@ -667,7 +672,7 @@
                 </p>
               </div>
               <div class="ac-shots-mac">
-                <picture class="ac-shot ac-shot--window">
+                <picture data-reveal="zoom" class="ac-shot ac-shot--window">
                   <source
                     srcset="assets/img/screens/mac-connected-dark.webp"
                     media="(prefers-color-scheme: dark)"
@@ -680,7 +685,7 @@
                     loading="lazy"
                   />
                 </picture>
-                <div class="ac-shot ac-shot--menu">
+                <div data-reveal="zoom" class="ac-shot ac-shot--menu">
                   <picture>
                     <source
                       srcset="assets/img/screens/mac-menu-dark.webp"
@@ -703,17 +708,17 @@
 
       <section class="ac-section ac-cta" id="download">
         <div class="ac-wrap">
-          <div class="ac-cta__icons">
+          <div class="ac-cta__icons" data-reveal>
             <img src="assets/img/aircursor-icon-ipad.png" alt="AirCursor for iPad" />
             <img src="assets/img/aircursor-icon-mac.png" alt="AirCursor for Mac" />
           </div>
-          <p class="ac-eyebrow">Free during launch</p>
-          <h2 class="ac-headline">Pick up your Pencil.</h2>
-          <p class="ac-lead">
+          <p class="ac-eyebrow" data-reveal>Free during launch</p>
+          <h2 class="ac-headline" data-reveal>Pick up your Pencil.</h2>
+          <p class="ac-lead" data-reveal>
             One App Store download gets you AirCursor on iPad and Mac. Pair them once with a
             six&#8209;digit code, and you're drawing.
           </p>
-          <div class="ac-btn-row">
+          <div class="ac-btn-row" data-reveal>
             <!-- Replace with Apple's official "Download on the App Store" badge once the listing is live -->
             <a class="ac-store" href="https://apps.apple.com/app/id0000000000">
               <small>Download on the</small>
@@ -721,7 +726,7 @@
             </a>
             <a class="ac-more" href="support/#start">Get set up</a>
           </div>
-          <div class="ac-reqs">
+          <div class="ac-reqs" data-reveal>
             <span class="ac-caption">iPadOS 17 or later</span>
             <span class="ac-caption">macOS 14 or later</span>
             <span class="ac-caption">Any Apple Pencil</span>

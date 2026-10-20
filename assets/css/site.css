@@ -463,6 +463,12 @@ a.ac-tile:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
 /* In-page links glide to their target and land clear of the sticky nav */
 main [id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+/* Scroll reveal: content rises into place the first time it enters the viewport. site.js adds is-revealed. */
+@media (prefers-reduced-motion: no-preference) {
+  .ac-js [data-reveal] { transition: opacity .8s var(--ac-ease), transform .8s var(--ac-ease); transition-delay: var(--reveal-delay, 0s); }
+  .ac-js [data-reveal]:not(.is-revealed) { opacity: 0; transform: translateY(24px); }
+  .ac-js [data-reveal="zoom"]:not(.is-revealed) { transform: scale(.96); }
+}
 @media (prefers-reduced-motion: reduce) {
   .ac-page *, .ac-page *::before, .ac-page *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
 }

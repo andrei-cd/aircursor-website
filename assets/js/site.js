@@ -19,6 +19,28 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   });
 
+  // Reveal: fade content up the first time it scrolls into view. Elements arriving together
+  // follow one another a beat apart.
+  var reveals = document.querySelectorAll('[data-reveal]');
+  if (reveals.length) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+    } else {
+      var revealer = new IntersectionObserver(function (entries) {
+        var step = 0;
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.style.setProperty('--reveal-delay', Math.min(step++, 5) * 80 + 'ms');
+          el.classList.add('is-revealed');
+          revealer.unobserve(el);
+          el.addEventListener('transitionend', function () { el.style.removeProperty('--reveal-delay'); }, { once: true });
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      reveals.forEach(function (el) { revealer.observe(el); });
+    }
+  }
+
   // Demo: pause and play the loop (video, or an animated SVG); reduced motion stops it on a finished stroke
   var PAUSE = '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>';
   var PLAY = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4a.6.6 0 0 0 .9.5l8.3-5.2a.6.6 0 0 0 0-1L4.4 1.3a.6.6 0 0 0-.9.5z" fill="currentColor"/></svg>';
