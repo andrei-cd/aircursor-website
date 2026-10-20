@@ -1,0 +1,86 @@
+/* AirCursor design tokens. Light by default, dark follows the system. */
+
+:root {
+  color-scheme: light dark;
+  --paper: #ffffff;
+  --paper-alt: #f5f5f2;
+  --paper-raised: #ffffff;
+  --hairline: #dedcd6;
+  --control-border: #8a8a8f;
+  --ink: #1c1c1e;
+  --ink-secondary: #5f5f66;
+  --ink-tertiary: #6e6e73;
+  --stage: #0b0b0d;
+  --stage-raised: #1a1a1d;
+  --on-stage: #f5f5f7;
+  --on-stage-muted: #a1a1a6;
+  --accent: #0a6ed1;
+  --accent-hover: #0860b8;
+  --on-accent: #ffffff;
+  --link: #0066cc;
+  --link-on-stage: #4da3ff;
+  --focus: #0a6ed1;
+  --brand-blue: #0b93f1;
+  --brand-violet: #906aa6;
+  --brand-coral: #f26b28;
+  --brand-orange: #ff8300;
+  --brand-amber: #ffbf00;
+  --stroke-blue: #0a6fd6;
+  --stroke-orange: #b54d00;
+  --success: #1b7f46;
+  --warning: #a64b00;
+  --warning-tint: #fff1e0;
+  --danger: #d70015;
+  --nav-glass: rgba(255, 255, 255, 0.78);
+  --shadow-tile: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.06), 0 20px 48px rgba(0, 0, 0, 0.10);
+  --shadow-device: 0 40px 80px rgba(0, 0, 0, 0.45);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 30px;
+  --radius-device: 44px;
+  --radius-pill: 980px;
+  --content-width: 980px;
+  --wide-width: 1260px;
+  --gutter: 22px;
+  --nav-height: 52px;
+  --font-display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #000000;
+    --paper-alt: #111113;
+    --paper-raised: #1c1c1e;
+    --hairline: #2c2c2e;
+    --control-border: #7c7c82;
+    --ink: #f5f5f7;
+    --ink-secondary: #a1a1a6;
+    --ink-tertiary: #8e8e93;
+    --stage: #161618;
+    --stage-raised: #232326;
+    --link: #4da3ff;
+    --focus: #4da3ff;
+    --stroke-blue: #4da3ff;
+    --stroke-orange: #ff9a2e;
+    --success: #30d158;
+    --warning: #ffb35c;
+    --warning-tint: #2a1c0d;
+    --danger: #ff6961;
+    --nav-glass: rgba(22, 22, 24, 0.78);
+    --shadow-tile: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --shadow-lift: 0 0 0 1px rgba(255, 255, 255, 0.10), 0 20px 48px rgba(0, 0, 0, 0.6);
+  }
+}
