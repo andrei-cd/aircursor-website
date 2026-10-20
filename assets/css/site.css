@@ -345,7 +345,9 @@ a.ac-tile:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
 .ac-check input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .ac-form__actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 8px; }
 .ac-seg--form { flex-wrap: wrap; }
-@media (max-width: 734px) { .ac-form { grid-template-columns: 1fr; } .ac-seg--form { border-radius: 18px; } }
+/* The setup fields, shown only for the kinds of feedback that need them */
+.ac-form__setup { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 20px; }
+@media (max-width: 734px) { .ac-form, .ac-form__setup { grid-template-columns: 1fr; } .ac-seg--form { border-radius: 18px; } }
 
 /* Form result */
 .ac-sent { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 56px 32px; text-align: center; border-radius: var(--radius-lg); background: var(--paper-raised); box-shadow: var(--shadow-tile); }

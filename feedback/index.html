@@ -118,7 +118,10 @@
                     <input class="ac-input" id="f-name" name="name" autocomplete="name" />
                   </div>
                   <div class="ac-field">
-                    <label for="f-email">Email</label>
+                    <label for="f-email">
+                      Email
+                      <span class="ac-field__opt" data-email-optional hidden>(optional)</span>
+                    </label>
                     <input
                       class="ac-input"
                       id="f-email"
@@ -133,27 +136,65 @@
                       Enter an email address so we can reply.
                     </span>
                   </div>
-                  <div class="ac-field">
-                    <label for="f-device">iPad and Pencil</label>
-                    <input
-                      class="ac-input"
-                      id="f-device"
-                      name="device"
-                      placeholder="e.g. iPad Air (M2), Pencil Pro"
-                    />
+
+                  <div class="ac-form__setup" data-kinds="Bug Question">
+                    <div class="ac-field">
+                      <label for="f-ipad">
+                        iPad
+                        <span class="ac-field__opt">(optional)</span>
+                      </label>
+                      <input
+                        class="ac-input"
+                        id="f-ipad"
+                        name="ipad"
+                        placeholder="e.g. iPad Air (M2)"
+                      />
+                    </div>
+                    <div class="ac-field">
+                      <label for="f-pencil">
+                        Apple Pencil
+                        <span class="ac-field__opt">(optional)</span>
+                      </label>
+                      <select class="ac-select" id="f-pencil" name="pencil">
+                        <option value="" selected>Choose…</option>
+                        <option>Apple Pencil Pro</option>
+                        <option>Apple Pencil (2nd generation)</option>
+                        <option>Apple Pencil (USB-C)</option>
+                        <option>Apple Pencil (1st generation)</option>
+                        <option>No Pencil</option>
+                        <option>Not sure</option>
+                      </select>
+                    </div>
+                    <div class="ac-field">
+                      <label for="f-mac">
+                        Mac
+                        <span class="ac-field__opt">(optional)</span>
+                      </label>
+                      <input
+                        class="ac-input"
+                        id="f-mac"
+                        name="mac"
+                        placeholder="e.g. MacBook Pro (M4)"
+                      />
+                    </div>
+                    <div class="ac-field">
+                      <label for="f-style">
+                        Connection style
+                        <span class="ac-field__opt">(optional)</span>
+                      </label>
+                      <select class="ac-select" id="f-style" name="connection">
+                        <option value="" selected>Choose…</option>
+                        <option>Automatic</option>
+                        <option>Wired</option>
+                        <option>Wi-Fi</option>
+                        <option>Peer-to-Peer Wi-Fi</option>
+                        <option>Bluetooth</option>
+                        <option>Manual IP</option>
+                        <option>Not sure</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="ac-field">
-                    <label for="f-style">Connection style</label>
-                    <select class="ac-select" id="f-style" name="connection">
-                      <option>Wired</option>
-                      <option>Wi-Fi</option>
-                      <option>Bluetooth</option>
-                      <option selected>Automatic</option>
-                      <option>Peer-to-Peer Wi-Fi</option>
-                      <option>Manual IP</option>
-                      <option>Not sure</option>
-                    </select>
-                  </div>
+
                   <div class="ac-field ac-field--full">
                     <label for="f-msg">Message</label>
                     <textarea
@@ -168,7 +209,7 @@
                       For bugs, the version number shown in AirCursor's Settings helps a lot.
                     </span>
                   </div>
-                  <div class="ac-field ac-field--full">
+                  <div class="ac-field ac-field--full" data-followup>
                     <label class="ac-check">
                       <input type="checkbox" name="followup" value="Yes" checked />
                       It's OK to email me with follow&#8209;up questions.
@@ -199,7 +240,7 @@
                   </svg>
                 </div>
                 <h2 class="ac-subtitle" tabindex="-1">Thanks. We got it.</h2>
-                <p class="ac-body">
+                <p class="ac-body" data-sent-reply>
                   We'll reply to the email you gave us, usually within a couple of days.
                 </p>
                 <a class="ac-more" href="../support/">Back to Support</a>

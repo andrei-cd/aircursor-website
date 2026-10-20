@@ -107,32 +107,81 @@
   }
 
   // Feedback: send to Formspree in the background and show the sent state.
-  // Without JavaScript the form still posts to Formspree normally.
+  // Without JavaScript the form still posts to Formspree normally, with every field showing.
   var form = document.querySelector('[data-ac-feedback]');
   if (form) {
     var status = form.querySelector('.ac-form__status');
     var submit = form.querySelector('[type="submit"]');
     var sent = document.querySelector('.ac-sent');
+    var subject = form.querySelector('[name="_subject"]');
     var email = form.querySelector('[name="email"]');
     var emailField = email.closest('.ac-field');
     var emailError = emailField.querySelector('.ac-field__error');
+    var emailOptional = form.querySelector('[data-email-optional]');
+    var message = form.querySelector('[name="message"]');
+    var hint = document.getElementById('f-msg-hint');
+    var followup = form.querySelector('[data-followup]');
+    var followupBox = followup.querySelector('input');
     var mailto = form.getAttribute('data-mailto');
 
+    // Bugs and questions need a way to reply and the setup; ideas and praise don't
+    var KINDS = {
+      Bug: { placeholder: 'What happened, and what did you expect?', emailRequired: true, hint: true },
+      Idea: { placeholder: 'What would make AirCursor better for you?', emailRequired: false },
+      Question: { placeholder: 'What would you like to know?', emailRequired: true },
+      Praise: { placeholder: 'What did you make, or what do you love?', emailRequired: false }
+    };
+
+    function currentKind() { return form.querySelector('[name="kind"]:checked').value; }
+    function setShown(el, shown) {
+      el.hidden = !shown;
+      el.querySelectorAll('input, select, textarea').forEach(function (control) { control.disabled = !shown; });
+    }
+    function updateFollowup() {
+      var shown = email.required || email.value.trim() !== '';
+      if (shown && followup.hidden) followupBox.checked = true;
+      setShown(followup, shown);
+    }
+    function applyKind() {
+      var kind = currentKind();
+      var options = KINDS[kind];
+      form.querySelectorAll('[data-kinds]').forEach(function (el) {
+        setShown(el, el.getAttribute('data-kinds').split(' ').indexOf(kind) !== -1);
+      });
+      email.required = options.emailRequired;
+      emailOptional.hidden = options.emailRequired;
+      message.placeholder = options.placeholder;
+      hint.hidden = !options.hint;
+      if (options.hint) message.setAttribute('aria-describedby', hint.id);
+      else message.removeAttribute('aria-describedby');
+      subject.value = 'AirCursor feedback: ' + kind;
+      // A required-email error doesn't apply once the email becomes optional
+      if (!email.required && !email.value) clearEmailError();
+      updateFollowup();
+    }
+
     function showStatus(html) { status.innerHTML = html; status.hidden = false; }
+    function setEmailError(error) {
+      emailField.classList.toggle('ac-field--error', error);
+      email.setAttribute('aria-invalid', String(error));
+      emailError.hidden = !error;
+    }
+    function clearEmailError() { setEmailError(false); }
     function validEmail() {
-      var ok = email.validity.valid && email.value.trim() !== '';
-      emailField.classList.toggle('ac-field--error', !ok);
-      email.setAttribute('aria-invalid', String(!ok));
-      emailError.hidden = ok;
+      var value = email.value.trim();
+      var ok = value === '' ? !email.required : email.validity.valid;
+      setEmailError(!ok);
       return ok;
     }
     email.addEventListener('blur', function () { if (email.value) validEmail(); });
+    email.addEventListener('input', updateFollowup);
+    form.querySelectorAll('[name="kind"]').forEach(function (radio) { radio.addEventListener('change', applyKind); });
+    applyKind();
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       status.hidden = true;
       if (!validEmail()) { email.focus(); return; }
-      var message = form.querySelector('[name="message"]');
       if (!message.value.trim()) { showStatus('Write a message before sending.'); message.focus(); return; }
       if (/YOUR_FORM_ID/.test(form.action)) {
         showStatus('The feedback form isn’t connected yet. Please email <a href="mailto:' + mailto + '">' + mailto + '</a> instead.');
@@ -144,6 +193,7 @@
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (response) {
           if (!response.ok) throw new Error(String(response.status));
+          if (!email.value.trim()) sent.querySelector('[data-sent-reply]').textContent = 'Every message is read by the person who builds AirCursor.';
           form.closest('.ac-card').hidden = true;
           sent.hidden = false;
           sent.querySelector('h2').focus();
