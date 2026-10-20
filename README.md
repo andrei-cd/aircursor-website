@@ -39,7 +39,43 @@ Then open http://localhost:8000.
 
 ## Deploy
 
-In the repository's **Settings → Pages**, deploy from the `main` branch, root folder. `.nojekyll` keeps GitHub Pages from processing the files. For a custom domain, add it there; GitHub creates the `CNAME` file.
+The site is configured for Cloudflare Pages. `scripts/build.sh` copies only the public site files into `dist/`, and `wrangler.jsonc` identifies that directory as the deployment output.
+
+### Connect the private GitHub repository
+
+1. In Cloudflare, open **Workers & Pages → Create → Pages → Import an existing Git repository**.
+2. Connect GitHub and grant Cloudflare access to this repository.
+3. Use these build settings:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Build command | `./scripts/build.sh` |
+| Build output directory | `dist` |
+| Root directory | `/` |
+
+Cloudflare creates a preview deployment for pull requests and deploys production whenever `main` changes.
+
+### Add the custom domain
+
+After the first deployment, open the Pages project and choose **Custom domains → Set up a domain**. Add `aircursor.app` and follow Cloudflare's DNS prompts. Add `www.aircursor.app` separately if both hostnames should work.
+
+### Build or deploy from the command line
+
+Build the deployable site locally with:
+
+```bash
+./scripts/build.sh
+```
+
+If Wrangler is installed, deploy the generated output with:
+
+```bash
+npx wrangler pages deploy
+```
+
+The dashboard Git integration is the recommended deployment path; the command-line route is optional.
 
 ## Before launch
 
