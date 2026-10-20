@@ -304,7 +304,7 @@ a.ac-tile:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
 .ac-legal__toc a { display: block; padding: 6px 0 6px 16px; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-secondary) !important; text-decoration: none !important; }
 .ac-legal__toc a:hover { color: var(--ink) !important; }
 .ac-legal__toc a[aria-current="true"] { color: var(--ink) !important; border-left-color: var(--stroke-blue); }
-.ac-legal__body h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 28px; line-height: 1.18; font-weight: 600; letter-spacing: -0.015em; scroll-margin-top: calc(var(--nav-height) + 24px); }
+.ac-legal__body h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 28px; line-height: 1.18; font-weight: 600; letter-spacing: -0.015em; }
 .ac-legal__body h2:first-child { margin-top: 0; }
 .ac-legal__body h3 { margin: 28px 0 8px; font-size: 17px; font-weight: 600; }
 .ac-legal__body p, .ac-legal__body li { color: var(--ink-secondary); }
@@ -460,6 +460,9 @@ a.ac-tile:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
 .ac-404 .ac-lead { margin: 20px auto 32px; max-width: 520px; }
 
 /* ---------- Motion ---------- */
+/* In-page links glide to their target and land clear of the sticky nav */
+main [id] { scroll-margin-top: calc(var(--nav-height) + 16px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media (prefers-reduced-motion: reduce) {
   .ac-page *, .ac-page *::before, .ac-page *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
 }
