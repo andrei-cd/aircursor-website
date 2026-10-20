@@ -19,7 +19,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   });
 
-  // Demo: pause and play the SVG loop; reduced motion stops it on a finished stroke
+  // Demo: pause and play the loop (video, or an animated SVG); reduced motion stops it on a finished stroke
   var PAUSE = '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>';
   var PLAY = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4a.6.6 0 0 0 .9.5l8.3-5.2a.6.6 0 0 0 0-1L4.4 1.3a.6.6 0 0 0-.9.5z" fill="currentColor"/></svg>';
   document.querySelectorAll('[data-ac-demo]').forEach(function (demo) {
@@ -38,7 +38,8 @@
     }
     if (!video && !(svg && svg.pauseAnimations)) { button.hidden = true; return; }
     if (reduceMotion) {
-      if (svg) svg.setCurrentTime(4.8);
+      if (video) video.currentTime = 4.75;
+      else if (svg) svg.setCurrentTime(4.8);
       setPaused(true);
     }
     button.addEventListener('click', function () { setPaused(!isPaused()); });

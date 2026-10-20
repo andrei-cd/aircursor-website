@@ -6,8 +6,8 @@
   <title>Page not found · AirCursor</title>
   <meta name="robots" content="noindex">
   <script>
-    // GitHub Pages serves this page for any missing path, so resolve assets from the site root:
-    // "/aircursor-website/" on github.io project pages, "/" on a custom domain.
+    // The host serves this page for any missing path, so resolve assets from the site root:
+    // "/" on Cloudflare Pages and the custom domain, "/aircursor-website/" on a github.io project page.
     document.write('<base href="' + (location.pathname.indexOf('/aircursor-website/') === 0 ? '/aircursor-website/' : '/') + '">');
   </script>
   <link rel="icon" type="image/png" href="assets/img/favicon.png">

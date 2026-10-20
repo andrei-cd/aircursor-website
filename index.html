@@ -8,6 +8,12 @@
   <meta property="og:title" content="AirCursor">
   <meta property="og:description" content="Turn iPad and Apple Pencil into a drawing tablet and trackpad for your Mac.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aircursor.app/">
+  <meta property="og:image" content="https://aircursor.app/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AirCursor on an iPad in front of a Mac: the Pencil's stroke appears on the Mac's screen.">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0b0b0d">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -55,79 +61,10 @@
       <div class="ac-wrap ac-wrap--wide ac-hero__demo" id="demo">
         <figure class="ac-demo" data-ac-demo>
           <div class="ac-demo__canvas">
-            <!-- To use a screen recording instead, replace this svg with:
-                 <video src="assets/video/aircursor-demo.mp4" poster="assets/video/aircursor-demo.jpg" autoplay muted loop playsinline></video> -->
-            <svg viewBox="0 0 1200 700" role="img" aria-label="An Apple Pencil draws a curve on an iPad in front of a Mac display, and the Mac's cursor draws the same curve at the same spot on screen.">
-              <defs>
-                <path id="acDemoPath" d="M178 330 C 205 214, 262 168, 302 232 S 344 362, 404 300 S 452 168, 506 212 S 566 344, 624 272 S 684 196, 716 236"/>
-                <linearGradient id="acDemoInk" gradientUnits="userSpaceOnUse" x1="178" y1="0" x2="716" y2="0">
-                  <stop offset="0" style="stop-color:var(--brand-blue)"/>
-                  <stop offset=".42" style="stop-color:var(--brand-violet)"/>
-                  <stop offset=".55" style="stop-color:var(--brand-coral)"/>
-                  <stop offset=".75" style="stop-color:var(--brand-orange)"/>
-                  <stop offset="1" style="stop-color:var(--brand-amber)"/>
-                </linearGradient>
-                <filter id="acDemoShadow" x="-20%" y="-20%" width="140%" height="150%">
-                  <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000" flood-opacity=".55"/>
-                </filter>
-              </defs>
-
-              <!-- Mac display -->
-              <rect class="d-stand" x="700" y="540" width="80" height="70"/>
-              <rect class="d-stand" x="630" y="604" width="220" height="12" rx="6"/>
-              <rect class="d-bezel" x="330" y="40" width="800" height="500" rx="22"/>
-              <rect class="d-screen-mac" x="346" y="56" width="768" height="468" rx="8"/>
-              <svg x="346" y="56" width="768" height="468" viewBox="0 0 768 468" overflow="hidden">
-                <rect x="0" y="0" width="768" height="22" fill="#ffffff" opacity=".8"/>
-                <rect class="d-dot" x="14" y="8" width="10" height="6" rx="3"/>
-                <rect class="d-dot" x="34" y="8" width="34" height="6" rx="3"/>
-                <rect class="d-dot" x="78" y="8" width="26" height="6" rx="3"/>
-                <rect class="d-dot" x="676" y="8" width="78" height="6" rx="3"/>
-                <rect class="d-window" x="58" y="50" width="652" height="392" rx="12"/>
-                <path class="d-chrome" d="M70 50h628a12 12 0 0 1 12 12v24H58V62a12 12 0 0 1 12-12z"/>
-                <circle class="d-dot" cx="80" cy="68" r="5"/>
-                <circle class="d-dot" cx="98" cy="68" r="5"/>
-                <circle class="d-dot" cx="116" cy="68" r="5"/>
-                <rect class="d-tool" x="74" y="110" width="40" height="176" rx="10"/>
-                <rect class="d-tool-on" x="81" y="118" width="26" height="26" rx="7"/>
-                <rect class="d-dot" x="81" y="156" width="26" height="26" rx="7"/>
-                <rect class="d-dot" x="81" y="194" width="26" height="26" rx="7"/>
-                <rect class="d-dot" x="81" y="232" width="26" height="26" rx="7"/>
-                <path class="d-ink" d="M178 330 C 205 214, 262 168, 302 232 S 344 362, 404 300 S 452 168, 506 212 S 566 344, 624 272 S 684 196, 716 236" stroke="url(#acDemoInk)" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1">
-                  <animate attributeName="stroke-dashoffset" values="1;0;0;1" keyTimes="0;.62;.97;1" dur="7s" repeatCount="indefinite"/>
-                  <animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;.62;.86;.95;1" dur="7s" repeatCount="indefinite"/>
-                </path>
-                <g>
-                  <path class="d-cursor" d="M0 0 L0 22 L5.5 16.8 L9.4 25.6 L13 24 L9.2 15.4 L16.5 15.4 Z"/>
-                  <animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.62;1" calcMode="linear"><mpath href="#acDemoPath"/></animateMotion>
-                </g>
-              </svg>
-
-              <!-- iPad, in front -->
-              <g filter="url(#acDemoShadow)"><rect class="d-bezel" x="62" y="290" width="516" height="396" rx="44"/></g>
-              <rect class="d-screen" x="80" y="308" width="480" height="360" rx="28"/>
-              <rect class="d-pill" x="230" y="322" width="180" height="26" rx="13"/>
-              <circle class="d-pill-dot" cx="246" cy="335" r="3.5"/>
-              <text class="d-pill-text" x="256" y="339.5">Connected · Wired</text>
-              <rect class="d-area" x="100" y="360" width="440" height="268" rx="6"/>
-              <path class="d-corner" d="M100 378v-18h18M522 360h18v18M540 610v18h-18M118 628h-18v-18"/>
-              <text class="d-hint" x="320" y="652" text-anchor="middle">Tablet mode</text>
-              <svg x="100" y="360" width="440" height="268" viewBox="0 0 768 468" overflow="visible">
-                <g>
-                  <animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.62;1" calcMode="linear"><mpath href="#acDemoPath"/></animateMotion>
-                  <animate attributeName="opacity" values="0;1;1;1;0;0" keyTimes="0;.05;.62;.84;.94;1" dur="7s" repeatCount="indefinite"/>
-                  <g transform="rotate(24)">
-                    <polygon class="d-pencil-tip" points="0,0 -12,-40 12,-40"/>
-                    <rect class="d-pencil-body" x="-12" y="-372" width="24" height="334" rx="5"/>
-                    <rect class="d-pencil-body" x="-12" y="-384" width="24" height="40" rx="12"/>
-                    <rect class="d-pencil-band" x="-12" y="-338" width="24" height="5"/>
-                  </g>
-                </g>
-              </svg>
-            </svg>
+            <video src="assets/video/aircursor-demo.mp4" poster="assets/video/aircursor-demo.jpg" autoplay muted loop playsinline preload="auto" aria-label="An Apple Pencil draws a wave on an iPad running AirCursor in Tablet mode. On the Mac display behind it, the cursor draws the same wave at the same spot, thicker where the Pencil presses harder."></video>
           </div>
           <figcaption class="ac-demo__bar">
-            <span class="ac-pill ac-pill--good">Wired <span class="ac-pill__detail">Lowest latency</span></span>
+            <span class="ac-pill ac-pill--good">Studio MacBook Pro <span class="ac-pill__detail">Wired · 4 ms</span></span>
             <p class="ac-caption">Tablet mode puts the cursor exactly where the Pencil lands. Pressure flows through to the app you draw in.</p>
             <button class="ac-demo__toggle" type="button" aria-label="Pause animation" aria-pressed="false">
               <svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>
@@ -174,7 +111,7 @@
                 <path d="M236 140 C 290 116, 340 72, 410 56" class="v-trail" stroke="url(#acPadGrad)" stroke-dasharray="2 9"/>
                 <path d="M410 50 L410 68 L414.5 63.8 L417.7 71 L420.6 69.7 L417.5 62.7 L423.5 62.7 Z" class="v-cursor"/>
                 <rect x="56" y="128" width="64" height="24" rx="12" class="v-chip"/>
-                <text x="88" y="144.5" text-anchor="middle" class="v-chip-text">1.50×</text>
+                <text x="88" y="144.5" text-anchor="middle" class="v-chip-text">2.50×</text>
               </svg>
             </div>
           </article>
@@ -230,6 +167,17 @@
                 <span class="ac-pressure__label" style="left:25%">Clicks at 25%</span>
                 <div class="ac-pressure__ends" aria-hidden="true"><span>Light</span><span>Firm</span></div>
               </div>
+            </div>
+          </article>
+          <article id="settings" class="ac-tile ac-tile--full ac-tile--split ac-tile--split-even ac-tile--canvas">
+            <div class="ac-tile__text">
+              <p class="ac-eyebrow">Settings</p>
+              <h2 class="ac-headline ac-headline--tile">Everyday choices, on one&nbsp;page.</h2>
+              <p class="ac-body ac-body--lg">Your Mac, cursor mode and input sit right at the top, with speed and acceleration below them in Trackpad mode. Change the speed on either device and the other follows.</p>
+              <p class="ac-caption">Apple Pencil, Finger Gestures, Tablet Mode and Appearance each have a page of their own.</p>
+            </div>
+            <div class="ac-tile__visual ac-tile__visual--center">
+              <picture class="ac-shot ac-shot--sheet"><source srcset="assets/img/screens/ipad-settings-dark.webp" media="(prefers-color-scheme: dark)"><img src="assets/img/screens/ipad-settings-light.webp" alt="AirCursor Settings on iPad: connected to Studio MacBook Pro over Wired, Cursor Mode set to Trackpad, Input set to Pencil and Fingers, Speed 2.50× and Acceleration 50%." width="580" height="650" loading="lazy"></picture>
             </div>
           </article>
         </div>
@@ -362,7 +310,7 @@
               <p class="ac-body">A six&#8209;digit code pairs your devices a single time. After that, every stroke travels end&#8209;to&#8209;end encrypted, and only to your own Mac.</p>
             </div>
             <div class="ac-tile__visual ac-tile__visual--center">
-              <div class="ac-code" role="img" aria-label="Pairing code 482 917"><span>4</span><span>8</span><span>2</span><span>9</span><span>1</span><span>7</span></div>
+              <img class="ac-shot ac-shot--window" src="assets/img/screens/mac-waiting-dark.webp" alt="AirCursor on the Mac, waiting for an iPad and showing the pairing code 482 913." width="500" height="374" loading="lazy">
             </div>
           </article>
           <article class="ac-tile ac-tile--canvas ac-tile--spread">
@@ -389,19 +337,9 @@
               <p class="ac-body ac-body--lg">Check the connection, nudge the speed, or pause input from any app with <span class="ac-kbd">⌃</span><span class="ac-kbd">⌥</span><span class="ac-kbd">⌘</span><span class="ac-kbd">P</span>. Either device can resume.</p>
               <p class="ac-caption">Open at Login brings it back after a restart, and paired iPads reconnect on their own.</p>
             </div>
-            <div class="ac-menu" role="img" aria-label="AirCursor's menu bar menu: connected to an iPad Pro over Wired, speed 1.50×, Pause Input, Settings.">
-              <div class="ac-menu__head">
-                <img src="assets/img/aircursor-icon-mac.png" alt="">
-                <div><div class="ac-menu__title">iPad Pro</div><div class="ac-caption ac-readout" style="font-size:12px">Wired · 3 ms</div></div>
-              </div>
-              <div class="ac-menu__sep"></div>
-              <div style="padding:8px 10px">
-                <div class="ac-menu__row" style="padding:0"><span>Speed</span><span class="ac-readout" style="font-size:13px;color:var(--ink-secondary)">1.50×</span></div>
-                <div class="ac-menu__slider"></div>
-              </div>
-              <div class="ac-menu__sep"></div>
-              <div class="ac-menu__row ac-menu__row--on"><span>Pause Input</span><span style="opacity:.85">⌃⌥⌘P</span></div>
-              <div class="ac-menu__row"><span>Settings…</span></div>
+            <div class="ac-shots-mac">
+              <picture class="ac-shot ac-shot--window"><source srcset="assets/img/screens/mac-connected-dark.webp" media="(prefers-color-scheme: dark)"><img src="assets/img/screens/mac-connected-light.webp" alt="AirCursor's window on the Mac: Connected to Drawing iPad Pro, Wired, 4 ms, with Pause Input and Disconnect buttons." width="500" height="359" loading="lazy"></picture>
+              <div class="ac-shot ac-shot--menu"><picture><source srcset="assets/img/screens/mac-menu-dark.webp" media="(prefers-color-scheme: dark)"><img src="assets/img/screens/mac-menu-light.webp" alt="AirCursor's menu bar menu: Drawing iPad Pro over Wired, Pause Input with its ⌃⌥⌘P shortcut, a Speed slider at 2.50×, and Open AirCursor, Settings, Disconnect and Quit." width="260" height="245" loading="lazy"></picture></div>
             </div>
           </article>
         </div>

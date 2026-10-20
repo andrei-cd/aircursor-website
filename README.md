@@ -22,7 +22,10 @@ assets/
   css/site.css     Components and page layouts, class prefix ac-
   js/site.js       Mobile menu, demo pause, support search, privacy contents, feedback form
   img/icons.svg    Line icon sprite, used with <use href="…/icons.svg#name">
-  img/             App icons, favicon, Apple touch icon
+  img/             App icons, favicon, Apple touch icon, og-image.jpg (link previews)
+  img/screens/     App screenshots, a light and a dark WebP of each
+  video/           The landing page's demo loop and its poster
+media/             Not deployed: the demo GIF for sharing, and the sources that make the video
 ```
 
 Every page works without JavaScript. The script only adds polish.
@@ -93,13 +96,29 @@ Also:
 - Swap the text-only App Store button in the landing page's download section for Apple's official "Download on the App Store" badge.
 - Have the privacy policy reviewed, and update its "Last updated" date when it changes.
 - When the paid version ships, change the "Free on the App Store during launch" and "Free during launch" eyebrows on the landing page.
+- The link-preview tags on the landing page (`og:url`, `og:image`) use `https://aircursor.app/`. Change them if the site launches on another domain.
+
+## Screenshots
+
+The screenshots in `assets/img/screens/` come from the real apps, using DEBUG-only launch arguments in the AirCursor Xcode project that swap in a canned, connected session. Nothing connects, and no real device names appear.
+
+- **iPad:** run the iPad scheme in a Simulator with `-demoConnected` (add `-demoTabletMode` for Tablet mode, `-demoSettings` to open Settings, `-demoLandscape` to lay it out in landscape), then `xcrun simctl io booted screenshot`. A `-demoLandscape` screenshot comes out on its side; turn it a quarter turn counterclockwise.
+- **Mac:** run the Mac app's binary with `-demoConnected` or `-demoWaiting`, plus `-demoMenu` for the menu bar menu, `-demoAppearance light` or `dark`, and `-demoSnapshot`, which prints the window as a base64 PNG and quits.
+
+Each image has a light and a dark version, swapped by a `<picture>` element with a `prefers-color-scheme` source. The Settings sheet is cropped out of the full iPad screen, and window corners are rounded in the image itself.
 
 ## Demo video
 
-The landing page's demo is an animated SVG. To use a screen recording instead, replace the `svg` inside `.ac-demo__canvas` with:
+The landing page's demo is `assets/video/aircursor-demo.mp4`: an 8-second, 60 fps loop with `aircursor-demo.jpg` as its poster. It's rendered from `media/demo/demo.html`, which places the real iPad canvas screenshot (`ipad.png`, Tablet mode, dark) in front of an illustrated Mac and animates the Pencil, the cursor and the ink. The mapping follows Tablet mode: the Mac's 16:10 screen maps onto the iPad canvas with the aspect ratio matched.
 
-```html
-<video src="assets/video/aircursor-demo.mp4" poster="assets/video/aircursor-demo.jpg" autoplay muted loop playsinline></video>
+To render it again, run these from the repository root. They need Google Chrome, Node 22 or later, and ffmpeg:
+
+```bash
+node media/demo/render.mjs "file://$PWD/media/demo/demo.html" /tmp/frames 1200 700 1.6 60 8
+ffmpeg -framerate 60 -i /tmp/frames/f%04d.png -c:v libx264 -pix_fmt yuv420p -crf 22 -movflags +faststart assets/video/aircursor-demo.mp4
+ffmpeg -i /tmp/frames/f0285.png -q:v 3 assets/video/aircursor-demo.jpg
 ```
 
-Keep the 12:7 frame. The pause button works with the video too. An 8 to 12 second, 60 fps H.264 MP4 under 4 MB works well.
+`media/aircursor-demo.gif` is the same loop at 720 px and 20 fps, for places that don't play video. `media/demo/og.html` renders `assets/img/og-image.jpg` the same way, with a single frame: `node media/demo/render.mjs "file://$PWD/media/demo/og.html" /tmp/og 1200 630 1 1 1 0`.
+
+The pause button works with the video, and with reduced motion the video stops on the finished stroke. Keep the 12:7 frame.
