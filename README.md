@@ -1,6 +1,6 @@
 # aircursor-website
 
-The website for AirCursor, the app that turns iPad and Apple Pencil into a drawing tablet and trackpad for the Mac. It's plain HTML, CSS and JavaScript, with no build step.
+The website for AirCursor, the app that turns iPad and Apple Pencil into a drawing tablet and trackpad for the Mac. It's plain HTML, CSS and JavaScript, with no build step. This repository contains only the website, not the app.
 
 ## Pages
 
@@ -42,15 +42,7 @@ Then open http://localhost:8000.
 
 ## Deploy
 
-The website is now live at aircursor.app through Cloudflare Pages, and every push to `main` redeploys it.
-
-The site is configured for Cloudflare Pages. `scripts/build.sh` copies only the public site files into `dist/`, and `wrangler.jsonc` identifies that directory as the deployment output.
-
-### Connect the private GitHub repository
-
-1. In Cloudflare, open **Workers & Pages → Create → Pages → Import an existing Git repository**.
-2. Connect GitHub and grant Cloudflare access to this repository.
-3. Use these build settings:
+The site is live at aircursor.app on Cloudflare Pages, and every push to `main` redeploys it. `scripts/build.sh` copies only the public site files into `dist/`, and `wrangler.jsonc` identifies that directory as the deployment output.
 
 | Setting                | Value                |
 | ---------------------- | -------------------- |
@@ -60,53 +52,11 @@ The site is configured for Cloudflare Pages. `scripts/build.sh` copies only the 
 | Build output directory | `dist`               |
 | Root directory         | `/`                  |
 
-Cloudflare creates a preview deployment for pull requests and deploys production whenever `main` changes.
-
-### Add the custom domain
-
-After the first deployment, open the Pages project and choose **Custom domains → Set up a domain**. Add `aircursor.app` and follow Cloudflare's DNS prompts. Add `www.aircursor.app` separately if both hostnames should work.
-
-### Build or deploy from the command line
-
-Build the deployable site locally with:
-
-```bash
-./scripts/build.sh
-```
-
-If Wrangler is installed, deploy the generated output with:
-
-```bash
-npx wrangler pages deploy
-```
-
-The dashboard Git integration is the recommended deployment path; the command-line route is optional.
-
-## Before launch
-
-The app itself isn't published yet, so the Download buttons still use a placeholder App Store link. Replace these placeholders across the HTML files:
-
-| Placeholder | Where | Replace with |
-| --- | --- | --- |
-| `https://apps.apple.com/app/id0000000000` | Every page (Download buttons) | The App Store listing URL |
-| `support@aircursor.app` | `feedback/index.html` (`data-mailto` and the link) | The support email, if it changes |
-| `privacy@aircursor.app` | `privacy/index.html` | The privacy contact email |
-
-Also:
-
-- Swap the text-only App Store button in the landing page's download section for Apple's official "Download on the App Store" badge.
-- Have the privacy policy reviewed, and update its "Last updated" date when it changes.
-- When the paid version ships, change the "Free on the App Store during launch" and "Free during launch" eyebrows on the landing page.
-- The link-preview tags on the landing page (`og:url`, `og:image`) use `https://aircursor.app/`. Change them if the site launches on another domain.
+To build the deployable site locally, run `./scripts/build.sh`.
 
 ## Screenshots
 
-The screenshots in `assets/img/screens/` come from the real apps, using DEBUG-only launch arguments in the AirCursor Xcode project that swap in a canned, connected session. Nothing connects, and no real device names appear.
-
-- **iPad:** run the iPad scheme in a Simulator with `-demoConnected` (add `-demoTabletMode` for Tablet mode, `-demoSettings` to open Settings, `-demoLandscape` to lay it out in landscape), then `xcrun simctl io booted screenshot`. A `-demoLandscape` screenshot comes out on its side; turn it a quarter turn counterclockwise.
-- **Mac:** run the Mac app's binary with `-demoConnected` or `-demoWaiting`, plus `-demoMenu` for the menu bar menu, `-demoAppearance light` or `dark`, and `-demoSnapshot`, which prints the window as a base64 PNG and quits.
-
-Each image has a light and a dark version, swapped by a `<picture>` element with a `prefers-color-scheme` source. The Settings sheet is cropped out of the full iPad screen, and window corners are rounded in the image itself.
+The screenshots in `assets/img/screens/` are captured from the real apps with canned demo data, so no real device names appear. Each image has a light and a dark version, swapped by a `<picture>` element with a `prefers-color-scheme` source. The Settings sheet is cropped out of the full iPad screen, and window corners are rounded in the image itself.
 
 ## Demo video
 
@@ -123,3 +73,9 @@ ffmpeg -i /tmp/frames/f0285.png -q:v 3 assets/video/aircursor-demo.jpg
 `media/aircursor-demo.gif` is the same loop at 720 px and 20 fps, for places that don't play video. `media/demo/og.html` renders `assets/img/og-image.jpg` the same way, with a single frame: `node media/demo/render.mjs "file://$PWD/media/demo/og.html" /tmp/og 1200 630 1 1 1 0`.
 
 The pause button works with the video, and with reduced motion the video stops on the finished stroke. Keep the 12:7 frame.
+
+## License
+
+Copyright © 2026 Andrei Cruspero. All rights reserved.
+
+The source code, text, and media in this repository, including the AirCursor name, icons, screenshots, and demo video, are published for reference only. No permission is granted to copy, modify, distribute, or reuse them without written permission.
